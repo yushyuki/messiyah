@@ -1,0 +1,33 @@
+<%= form_for(@post) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.label :shop_name %><br>
+    <%= f.text_field :shop_name %>
+  </div>
+  <div class="field">
+        <%= f.label :image %><br>
+        <%= f.file_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_field :content %>
+  </div>
+  <label>全て<%= f.check_box :all ,{id: "all"}, "1","0" %>使用可</label>
+  <div id="check">
+  <label>キッチン<%= f.check_box :kitchen,{}, "1","0" %>使用可</label>
+  <label>ホール<%= f.check_box :hall,{}, "1","0" %>使用可</label>
+  <label>カウンター<%= f.check_box :counter,{}, "1","0"%>使用可</label>
+  <label>ガスコンロ<%= f.check_box :gas_stove,{}, "1","0" %>使用可</label>
+  <label>レンジ<%= f.check_box :range,{}, "1","0" %>使用可</label>
+  <label>冷蔵庫<%= f.check_box :refrigerator,{}, "1","0" %>使用可</label>
+  <label>食器洗浄機<%= f.check_box :dishwashers,{}, "1","0" %>使用可</label>
+  <label>調理台<%= f.check_box :worktop,{}, "1","0" %>使用可</label>
+</div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

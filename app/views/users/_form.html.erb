@@ -1,7 +1,7 @@
 <div class="row">
   <div class="span6 offset3">   
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages' %>
+    <%= form_for @user, html: { multipart: true} do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
 
       <div class="field">
         <%= f.label :name %><br>
@@ -16,8 +16,6 @@
         <%= f.text_field :phonenumber %>
       </div>
       <div class="field">
-        <%= f.label :address %><br>
-        <%= f.text_field :address %>
       </div>
       <div class="field">
         <%= f.label :password %>

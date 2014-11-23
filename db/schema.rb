@@ -11,13 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141122061045) do
+ActiveRecord::Schema.define(version: 20141122100657) do
+
+  create_table "posts", force: true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.string   "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "all"
+    t.integer  "shop_name"
+    t.integer  "kitchen"
+    t.integer  "hall"
+    t.integer  "counter"
+    t.integer  "equipment"
+    t.integer  "gas_stove"
+    t.integer  "range"
+    t.integer  "refrigerator"
+    t.integer  "dishwashers"
+    t.integer  "worktop"
+    t.string   "image"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
     t.string   "phonenumber"
-    t.string   "address"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"

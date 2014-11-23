@@ -1,0 +1,87 @@
+<h1>Listing posts</h1>
+
+<table class="brwsr1">
+  <thead>
+    <tr>
+      <th class="r1">Picture</th>
+      <th class="r1">Content</th>
+      <th class="r1">shopname</th>
+      <th class="r1">all</th>
+      <th class="r1">kitchen</th>
+      <th class="r1">hall</th>
+      <th class="r1">counter</th>
+      <th class="r1">gas_stove</th>
+      <th class="r1">range</th>
+      <th class="r1">refrigereator</th>
+      <th class="r1">dishwashers</th>
+      <th class="r1">worktop</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= profile_image_for (post) %></td>
+        <td class="r3"><%= post.content %></td>
+        <td class="r3"><%= post.shop_name %></td>
+        <% if post.all==1 %>
+        <td class="r2">使用可</td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td>
+        <% else %>
+        <td class="r4"></td>
+        <% if post.kitchen==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %>
+        <% if post.hall==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %>
+        <% if post.counter==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %>   
+        <% if post.gas_stove==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %>   
+        <% if post.range==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %>   
+        <% if post.refrigerator==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %>  
+        <% if post.dishwashers==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %>  
+        <% if post.worktop==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %> 
+        <% end %>
+
+        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if signed_in? %>
+<%= link_to 'New Post', new_post_path %>
+<% end %>

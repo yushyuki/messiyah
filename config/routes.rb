@@ -1,8 +1,7 @@
 Messiyah::Application.routes.draw do
-  get "sessions/new"
-  get "sessions/create"
-  get "sessions/destroy"
-  root  'about#index'
+  resources :posts
+
+  root  'posts#index'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/about', to:'about#index', via:'get'
