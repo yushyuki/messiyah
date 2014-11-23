@@ -1,7 +1,8 @@
 Messiyah::Application.routes.draw do
+  get "maps/index"
   resources :posts
 
-  root  'posts#index'
+  root  'about#index'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/about', to:'about#index', via:'get'

@@ -29,6 +29,8 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     file = params[:post][:image]
     @post.set_image(file)
+    @place = Place.new({address: params[:post][:address]})
+    @place.save
     if @post.save
       redirect_to @post
     else

@@ -1,7 +1,6 @@
 class AllToPosts < ActiveRecord::Migration
   def change
   	add_column :posts, :all, :integer
-    add_column :posts, :shop_name, :integer
   	add_column :posts, :kitchen, :integer
   	add_column :posts, :hall, :integer
   	add_column :posts, :counter, :integer

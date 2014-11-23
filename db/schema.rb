@@ -11,16 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141122100657) do
+ActiveRecord::Schema.define(version: 20141123042203) do
+
+  create_table "places", force: true do |t|
+    t.text     "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", force: true do |t|
     t.string   "content"
     t.integer  "user_id"
-    t.string   "address"
+    t.text     "address"
+    t.integer  "shop_kind"
+    t.string   "time"
+    t.string   "house_rent"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "all"
-    t.integer  "shop_name"
     t.integer  "kitchen"
     t.integer  "hall"
     t.integer  "counter"

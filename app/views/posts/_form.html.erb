@@ -1,8 +1,16 @@
 <%= form_for(@post) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.label :shop_name %><br>
-    <%= f.text_field :shop_name %>
+    <%= f.label :shop_kind %><br>
+    <%= f.text_field :shop_kind %>
+  </div>
+  <div class="field">
+    <%= f.label :time %><br>
+    <%= f.text_field :time %>
+  </div>
+  <div class="field">
+    <%= f.label :house_rent %><br>
+    <%= f.text_field :house_rent %>
   </div>
   <div class="field">
         <%= f.label :image %><br>
