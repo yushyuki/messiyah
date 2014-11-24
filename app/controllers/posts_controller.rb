@@ -67,7 +67,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:content, :user_id, :image, :address, :all, :shop_name, :kitchen, :hall, :counter, :gas_stove, :range, :refrigerator, :dishwashers, :worktop)
+      params.require(:post).permit(:youbi_all,:content, :user_id, :image, :address, :all, :shop_kind, :kitchen, :hall, :counter, :gas_stove, :range, :refrigerator, :dishwashers, :worktop, :time, :time2, :house_rent, :fryer, :sink, :sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday)
     end
 
     def correct_user

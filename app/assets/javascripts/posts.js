@@ -8,3 +8,14 @@ $(function(){
     }
   });
 });
+
+
+$(function(){
+    $('#youbi_all').on('click', function(){
+    if(this.checked){
+    $('#youbi_check input').prop('checked','checked');
+    }else{
+    $('#youbi_check input').removeAttr('checked');
+    }
+  });
+});

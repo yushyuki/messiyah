@@ -1,4 +1,5 @@
 Messiyah::Application.routes.draw do
+  get "searchs/index"
   get "maps/index"
   resources :posts
 
