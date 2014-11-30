@@ -1,5 +1,10 @@
-<div class="span8">
-      <% @posts.each do |post| %>
-      <div><%= post.content %></div>
-      <% end %>
-</div>
+
+<% @posts.each do |post| %>
+  <div class="parent">
+    <div class="image">
+      <%= profile_image_for post %>
+    </div>
+    <div class="content"><%= link_to post.content, post %></div>
+  </div>
+  <div class="clear"></div>
+<% end %>

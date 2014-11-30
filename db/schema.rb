@@ -52,7 +52,13 @@ ActiveRecord::Schema.define(version: 20141123042203) do
     t.integer  "dishwashers"
     t.integer  "worktop"
     t.integer  "sink"
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "image"
+    t.string   "image2"
+    t.string   "image3"
+    t.string   "image4"
+    t.string   "image5"
   end
 
   create_table "users", force: true do |t|

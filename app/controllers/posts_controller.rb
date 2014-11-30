@@ -27,10 +27,20 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-    file = params[:post][:image]
-    @post.set_image(file)
+    file1 = params[:post][:image]
+    file2 = params[:post][:image2]
+    file3 = params[:post][:image3]
+    file4 = params[:post][:image4]
+    file5 = params[:post][:image5]
+    @post.set_image(file1)
+    @post.set_image2(file2)
+    @post.set_image3(file3)
+    @post.set_image4(file4)
+    @post.set_image5(file5)
     @place = Place.new({address: params[:post][:address]})
     @place.save
+    @post.latitude=@place.latitude
+    @post.longitude=@place.longitude
     if @post.save
       redirect_to @post
     else
@@ -67,7 +77,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:youbi_all,:content, :user_id, :image, :address, :all, :shop_kind, :kitchen, :hall, :counter, :gas_stove, :range, :refrigerator, :dishwashers, :worktop, :time, :time2, :house_rent, :fryer, :sink, :sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday)
+      params.require(:post).permit(:youbi_all,:content, :user_id, :image, :image2, :image3, :image4, :image5, :address, :all, :shop_kind, :kitchen, :hall, :counter, :gas_stove, :range, :refrigerator, :dishwashers, :worktop, :time, :time2, :house_rent, :fryer, :sink, :sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday)
     end
 
     def correct_user

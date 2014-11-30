@@ -3,6 +3,18 @@
 <p>
   <strong>Picture:</strong>
   <%= profile_image_for @post %>
+  <% if !@post.image2.nil? %>
+  <%= profile_image2_for @post %>
+  <% end %>
+  <% if !@post.image3.nil? %>
+  <%= profile_image3_for @post %>
+  <% end %>
+  <% if !@post.image4.nil? %>
+  <%= profile_image4_for @post %>
+  <% end %>
+  <% if !@post.image5.nil? %>
+  <%= profile_image5_for @post %>
+  <% end %>
 </p>
 
 <p>

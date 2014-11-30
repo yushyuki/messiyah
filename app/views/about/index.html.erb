@@ -15,7 +15,84 @@
         現役東大生と元飲食店経営者が不景気の日本、とりわけ個人事業主の力になれれば立ち上げました。</p>
     </div>
 </div>
+<br>
 <div>
-  <h1>検索</h1>
+<%= render 'about/about'%>
 </div>
-<%= render 'about/about' %>
+<br>
+</br>
+<div class="searcher">
+  <h1>検索</h1>
+  <%= form_tag searchs_index_path, :method => 'get' do %> 
+  <table>
+  	<tr>
+      <th>価格</th>
+      <td>指定無し<%= radio_button :rent, params[:rent], "0",{} %></td>
+      <td>0~5万<%= radio_button :rent, params[:rent], "1",{} %></td>
+      <td>5~10万<%= radio_button :rent, params[:rent], "2",{} %></td>
+      <td>10~15万<%= radio_button :rent, params[:rent], "3",{} %></td>
+      <td>15~20万<%= radio_button :rent , params[:rent], "4",{}  %></td>
+      <td>20~25万<%= radio_button :rent , params[:rent], "5",{}  %></td>
+  	</tr>
+  </table> 
+  <table>
+  	<tr>
+      <th>店舗</th>
+      <td>指定無し<%= radio_button :kind, params[:kind], "0",{} %></td>
+      <td>カフェ・喫茶店<%= radio_button :kind, params[:kind], "1",{} %></td>
+      <td>居酒屋<%= radio_button :kind, params[:kind], "2",{} %></td>
+      <td>ダイニングバーBAR<%= radio_button :kind, params[:kind], "3",{} %></td>
+      <td>レストラン洋食<%= radio_button :kind, params[:kind], "4",{} %></td>
+      <td>イタリアン・フレンチ<%= radio_button :kind, params[:kind], "5",{} %></td>
+      <td>ラーメン<%= radio_button :kind, params[:kind], "6",{} %></td>
+      <td>中華料理店<%= radio_button :kind, params[:kind], "7",{} %></td>
+      <td>スナック<%= radio_button :kind, params[:kind], "8",{} %></td>
+      <td>パン屋<%= radio_button :kind, params[:kind], "9",{} %></td>
+      <td>寿司<%= radio_button :kind, params[:kind], "10",{} %></td>
+      <td>アジアン<%= radio_button :kind, params[:kind], "11",{} %></td>
+      <td>ライブハウス<%= radio_button :kind, params[:kind], "12",{} %></td>
+      <td>空き店舗<%= radio_button :kind, params[:kind], "13",{} %></td>
+      <td>その他<%= radio_button :kind, params[:kind], "14",{} %></td>
+  	</tr>
+  </table>
+  <table>
+  	<tr>
+      <th>時間帯</th>
+      <td>指定無し<%= radio_button :time, params[:time], "0",{} %></td>
+      <td>午前中<%= radio_button :time, params[:time], "1",{} %></td>
+      <td>ランチタイム<%= radio_button :time, params[:time], "2",{} %></td>
+      <td>ディナータイム<%= radio_button :time, params[:time], "3",{} %></td>
+      <td>深夜<%= radio_button :time , params[:time], "4",{}  %></td>
+  	</tr>
+  </table> 
+  <table>
+  	<tr>
+      <th>設備条件</th>
+      <td>全て<%= check_box :all, params[:all],{}, "1","0" %></td>
+      <td>キッチン<%= check_box :kitchen, params[:kitchen],{}, "1","0" %></td>
+      <td>ホール<%= check_box :hall, params[:hall],{}, "1","0" %></td>
+      <td>カウンター<%= check_box :counter, params[:counter],{}, "1","0" %></td>
+      <td>フライヤー<%= check_box :fryer, params[:fryer],{}, "1","0" %></td>
+      <td>コンロ<%= check_box :gas_stove, params[:gas_stove],{}, "1","0" %></td>
+      <td>レンジ<%= check_box :range, params[:range],{}, "1","0" %></td>
+      <td>冷蔵庫冷凍庫<%= check_box :refrigerator, params[:refrigerator],{}, "1","0" %></td>
+      <td>皿洗い機<%= check_box :dishwashers, params[:dishwashers],{}, "1","0" %></td>
+      <td>調理台<%= check_box :worktop, params[:worktop],{}, "1","0" %></td>
+      <td>シンク<%= check_box :sink, params[:sink],{}, "1","0" %></td>
+  	</tr>
+  </table> 
+  <button type="submit"><i class="fa fa-search"></i></button>
+  <% end %>
+</div>
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 600px;'></div>
+</div>
+<script type="text/javascript">
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers(<%=raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+    });
+</script>

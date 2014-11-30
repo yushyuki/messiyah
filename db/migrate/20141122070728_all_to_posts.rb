@@ -11,5 +11,7 @@ class AllToPosts < ActiveRecord::Migration
   	add_column :posts, :dishwashers, :integer
   	add_column :posts, :worktop, :integer
     add_column :posts, :sink, :integer
+    add_column :posts, :latitude, :float
+    add_column :posts, :longitude, :float
   end
 end
