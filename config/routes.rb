@@ -1,12 +1,10 @@
 Messiyah::Application.routes.draw do
+  devise_for :users, controllers: { :registrations => "users/registrations", :sessions => "users/sessions"}
+  devise_for :customers, :controllers => { :registrations => "customers/registrations", :sessions => "customers/sessions", :omniauth_callbacks => "customers/omniauth_callbacks"  }
   get "searchs/index"
   get "maps/index"
   resources :posts
 
   root  'about#index'
-  match '/signin',  to: 'sessions#new',         via: 'get'
-  match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/about', to:'about#index', via:'get'
-  resources :users
-  resources :sessions, only: [:new, :create, :destroy]
 end

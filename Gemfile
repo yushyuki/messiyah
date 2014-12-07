@@ -47,3 +47,9 @@ group :production do
 end
 gem 'better_errors'
 gem 'binding_of_caller'
+
+#devise facebook twitter認証
+gem  'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'

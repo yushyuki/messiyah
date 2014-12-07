@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :signed_in_user, only: [:create, :edit, :destroy]
   before_action :correct_user,   only: [:edit, :destroy]
 
   # GET /posts
@@ -83,5 +82,10 @@ class PostsController < ApplicationController
     def correct_user
       @post = Post.find_by(id: params[:id])
       redirect_to root_url unless current_user?(@post.user)
+    end
+
+    def signed_in?
+    !current_user.nil?
+  　end
     end
 end
