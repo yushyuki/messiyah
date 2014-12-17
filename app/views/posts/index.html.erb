@@ -15,8 +15,8 @@
       <th class="r1">refrigereator</th>
       <th class="r1">dishwashers</th>
       <th class="r1">worktop</th>
-      <th></th>
-      <th></th>
+      <th class="r1">sink</th>
+      <th class="r1">fryer</th>
       <th></th>
     </tr>
   </thead>
@@ -28,7 +28,7 @@
         <td class="r3"><%= post.content %></td>
         <td class="r3"><%= post.shop_kind %></td>
         <% if post.all==1 %>
-        <td class="r2">使用可</td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td>
+        <td class="r2">使用可</td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td>
         <% else %>
         <td class="r4"></td>
         <% if post.kitchen==1 %> 
@@ -71,11 +71,19 @@
         <% else %>
         <td class="r4"></td>
         <% end %> 
+        <% if post.sink==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %> 
+        <% if post.fryer==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %> 
         <% end %>
 
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', post_path(post) %></td>
       </tr>
     <% end %>
   </tbody>

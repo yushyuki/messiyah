@@ -10,7 +10,6 @@ class Users::SessionsController < Devise::SessionsController
   def destroy
     super
   end
-
   # protected
   #   def configure_permitted_parameters
   #     devise_parameter_sanitizer.for(:sign_in) << :name

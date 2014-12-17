@@ -1,0 +1,28 @@
+<h1>Listing messages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>User</th>
+      <th>Customer</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @messages.each do |message| %>
+      <tr>
+        <td><%= message.content %></td>
+        <td><%= message.user.name %></td>
+        <td><%= message.customer.name %></td>
+        <td><%= link_to 'reply', message %></td>
+        <td><%= link_to 'Show', message %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

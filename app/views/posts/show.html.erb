@@ -23,9 +23,166 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @post.user_id %>
+  <strong>address:</strong>
+  <%= @post.address %>
+</p>
+<p>
+  <strong>time:</strong>
+  <%= @post.time %>時~<%= @post.time2 %>時
+</p>
+<p>
+  <strong>house_rent:</strong>
+  <%= @post.house_rent %>円/月
+  <table class="brwsr1">
+    <thead>
+      <tr>
+        <th class="r1">all</th>
+        <th class="r1">月曜</th>
+        <th class="r1">火曜</th>
+        <th class="r1">水曜</th>
+        <th class="r1">木曜</th>
+        <th class="r1">金曜</th>
+        <th class="r1">土曜</th>
+        <th class="r1">日曜</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+          <% if @post.youbi_all==1 %>
+          <td class="r2">使用可</td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td>
+          <% else %>
+          <td class="r4"></td>
+          <% if @post.monday==1 %> 
+          <td class="r2">使用可</td>
+          <% else %>
+          <td class="r4"></td>
+          <% end %>
+          <% if @post.tuesday==1 %> 
+          <td class="r2">使用可</td>
+          <% else %>
+          <td class="r4"></td>
+          <% end %>
+          <% if @post.wednesday==1 %> 
+          <td class="r2">使用可</td>
+          <% else %>
+          <td class="r4"></td>
+          <% end %>   
+          <% if @post.thursday==1 %> 
+          <td class="r2">使用可</td>
+          <% else %>
+          <td class="r4"></td>
+          <% end %>   
+          <% if @post.friday==1 %> 
+          <td class="r2">使用可</td>
+          <% else %>
+          <td class="r4"></td>
+          <% end %>   
+          <% if @post.saturday==1 %> 
+          <td class="r2">使用可</td>
+          <% else %>
+          <td class="r4"></td>
+          <% end %>  
+          <% if @post.sunday==1 %> 
+          <td class="r2">使用可</td>
+          <% else %>
+          <td class="r4"></td>
+          <% end %>  
+          <% end %>
+        </tr>
+    </tbody>
+  </table>
+
 </p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
+
+<table class="brwsr1">
+  <thead>
+    <tr>
+      <th class="r1">shop_kind</th>
+      <th class="r1">all</th>
+      <th class="r1">kitchen</th>
+      <th class="r1">hall</th>
+      <th class="r1">counter</th>
+      <th class="r1">gas_stove</th>
+      <th class="r1">range</th>
+      <th class="r1">refrigereator</th>
+      <th class="r1">dishwashers</th>
+      <th class="r1">worktop</th>
+      <th class="r1">sink</th>
+      <th class="r1">fryer</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td class="r3"><% if @post.shop_kind==1 %>カフェ・喫茶店<% elsif @post.shop_kind==0 %>指定無し<% elsif @post.shop_kind==2 %><居酒屋% elsif @post.shop_kind==3 %>ダイニングバー<% elsif @post.shop_kind==4 %>レストラン洋食<% elsif @post.shop_kind==5 %>イタリアンフレンチ<% elsif @post.shop_kind==6 %>ラーメン<% elsif @post.shop_kind==7 %>中華料理店<% elsif @post.shop_kind==8 %>スナック・クラブ<% elsif @post.shop_kind==9 %>パン屋<% elsif @post.shop_kind==10 %>寿司<% elsif @post.shop_kind==11 %>アジアン料理<% elsif @post.shop_kind==12 %>ライブハウス<% elsif @post.shop_kind==13 %>空き店舗<% elsif @post.shop_kind==14 %>その他<%end %></td>
+        <% if @post.all==1 %>
+        <td class="r2">使用可</td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td>
+        <% else %>
+        <td class="r4"></td>
+        <% if @post.kitchen==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %>
+        <% if @post.hall==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %>
+        <% if @post.counter==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %>   
+        <% if @post.gas_stove==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %>   
+        <% if @post.range==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %>   
+        <% if @post.refrigerator==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %>  
+        <% if @post.dishwashers==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %>  
+        <% if @post.worktop==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %> 
+        <% if @post.sink==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %> 
+        <% if @post.fryer==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %> 
+        <% end %>
+
+      </tr>
+  </tbody>
+</table>
+
 <%= link_to 'Back', posts_path %>
+
+<% if customer_signed_in? %>
+<%=render 'messages/form' %>
+<%= link_to 'お店の方にメッセージ', new_message_path %> 
+<% elsif %>
+<%= link_to 'お店の方にメッセージを送る前にユーザー登録',new_customer_registration_path %> 
+<% end %>
+

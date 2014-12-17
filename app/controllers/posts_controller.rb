@@ -11,6 +11,8 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+      @title = 'Tweet'
+      @message = Message.new
   end
 
   # GET /posts/new
@@ -25,7 +27,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     file1 = params[:post][:image]
     file2 = params[:post][:image2]
     file3 = params[:post][:image3]
@@ -86,6 +88,5 @@ class PostsController < ApplicationController
 
     def signed_in?
     !current_user.nil?
-  　end
     end
 end

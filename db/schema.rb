@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141207122133) do
+ActiveRecord::Schema.define(version: 20141215002518) do
 
   create_table "customers", force: true do |t|
     t.string   "name",                                null: false
@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(version: 20141207122133) do
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true
   add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   add_index "customers", ["uid", "provider"], name: "index_customers_on_uid_and_provider", unique: true
+
+  create_table "messages", force: true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "customer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "places", force: true do |t|
     t.text     "address"
@@ -102,13 +110,10 @@ ActiveRecord::Schema.define(version: 20141207122133) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "uid",                    default: "", null: false
-    t.string   "provider",               default: "", null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
 
 end

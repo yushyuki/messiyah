@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+<% @messages.each do |message| %>
+<p>
+  <strong>Content:</strong>
+  <%= message.content %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= message.user.name %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= message.customer.name %>
+</p>
+<%end %>
+
+<div>
+    <% if user_signed_in? %>
+	    <%= form_for Message.new, url:{ controller: :messages, action: :reply, message_id: @message.id} do |f| %>
+	      <%= f.hidden_field :customer_id, :value => @message.customer_id %>
+	      <%= text_area_tag '@message[content]', "from #{@message.user.name} to #{@message.customer.name}", placeholder: 'reply' %>
+	      <%= f.submit 'reply', class: "btn btn-primary" %>
+	    <% end %>
+    <% elsif customer_signed_in? %>
+	    <%= form_for Message.new, url:{ controller: :messages, action: :reply, message_id: @message.id} do |f| %>
+	      <%= f.hidden_field :user_id, :value => @message.user_id %>
+	      <%= text_area_tag '@message[content]', "from #{@message.customer.name} to #{@message.user.name}", placeholder: 'reply' %>
+	      <%= f.submit 'reply', class: "btn btn-primary" %>
+	    <% end %>
+	<% end %>
+  </div>
+<%= link_to 'Back', messages_path %>

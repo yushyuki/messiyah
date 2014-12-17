@@ -7,7 +7,9 @@ class User < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: true
-  
+  validates :name, presence: true
+  validates :phonenumber, presence: true
+  has_many :messages, dependent: :destroy
  
   def User.new_remember_token
     SecureRandom.urlsafe_base64

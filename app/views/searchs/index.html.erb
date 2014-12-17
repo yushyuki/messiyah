@@ -1,4 +1,101 @@
+<h1>Post searching</h1>
 
-<li class='posts'>
-  <%= render @posts %>
-</li>
+<table class="brwsr1">
+  <thead>
+    <tr>
+      <th class="r1">Picture</th>
+      <th class="r1">house_rent</th>
+      <th class="r1">time</th>
+      <th class="r1">address</th>
+      <th class="r1">Content</th>
+      <th class="r1">shopname</th>
+      <th class="r1">all</th>
+      <th class="r1">kitchen</th>
+      <th class="r1">hall</th>
+      <th class="r1">counter</th>
+      <th class="r1">gas_stove</th>
+      <th class="r1">range</th>
+      <th class="r1">refrigereator</th>
+      <th class="r1">dishwashers</th>
+      <th class="r1">worktop</th>
+      <th class="r1">sink</th>
+      <th class="r1">fryer</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= profile_image_for (post) %></td>
+        <td class="r3"><%= post.house_rent %></td>
+        <td class="r3"><%= post.time %>時~<%= post.time2 %>時</td>
+        <td class="r3"><%= post.address %></td>
+        <td class="r3"><%= post.content %></td>
+        <td class="r3"><%= post.shop_kind %></td>
+        <% if post.all==1 %>
+        <td class="r2">使用可</td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td><td class="r4"></td>
+        <% else %>
+        <td class="r4"></td>
+        <% if post.kitchen==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %>
+        <% if post.hall==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %>
+        <% if post.counter==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %>   
+        <% if post.gas_stove==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %>   
+        <% if post.range==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %>   
+        <% if post.refrigerator==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %>  
+        <% if post.dishwashers==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %>  
+        <% if post.worktop==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %> 
+        <% if post.sink==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %> 
+        <% if post.fryer==1 %> 
+        <td class="r2">使用可</td>
+        <% else %>
+        <td class="r4"></td>
+        <% end %> 
+        <% end %>
+
+        <td><%= link_to 'Show', post_path(post) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if signed_in? %>
+<%= link_to 'New Post', new_post_path %>
+<% end %>
